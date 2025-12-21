@@ -1,0 +1,24 @@
+timestamp,user_prompt,predicted_tool,generated_command,execution_status
+2025-12-14 19:53:08,install numpy,pip,pip install numpy,generated
+2025-12-14 19:53:16,install pandas,pip,pip install pandas,generated
+2025-12-14 19:53:27,ipconfig,unknown,,skipped
+2025-12-14 21:17:21,scan open ports using nmap,nmap,,generated
+2025-12-14 21:17:31,install,nmap,,generated
+2025-12-14 21:17:41,install numpy,john_the_ripper,,generated
+2025-12-14 21:21:55,ipconfig,netstat_ss,,generated
+2025-12-14 21:22:05,pip install numpy,netstat_ss,,generated
+2025-12-14 23:05:00,scan open ports using nmap,nmap,"nmap -p 22,80,443 10.0.1.248 -T4",generated
+2025-12-14 23:05:38,hello how are you,nmap,nmap -oN /lab/demo_145.out 10.0.0.145,generated
+2025-12-16 12:14:11,ipcofig,netstat_ss,ss -6 -a,generated
+2025-12-16 12:14:26,pip install numpy,netstat_ss,ss -a > /lab/demo_979.out,generated
+2025-12-16 12:14:56,pwd,xhydra,xhydra  # load passwords=/lab/demo_213.out (UI),generated
+2025-12-16 12:15:15,dir,sqlmap,echo 'Output stored under ./output/demo4.example.com (demo)',generated
+2025-12-16 12:17:04,ipconfig,netstat_ss,ss -6 -a,generated
+2025-12-17 13:45:45,perform a port scan on localhost,nmap,nmap -sU --top-ports 50 10.0.0.127,generated
+2025-12-20 17:09:49,scan open ports on localhost using nmap,nmap,,generation_error
+2025-12-20 17:12:04,scan open ports on localhost using nmap,nmap,,generation_error
+2025-12-20 17:17:47,scan open ports on localhost using nmap,nmap,"Command: nmap -p 22,80,443 localhost -T4",generated
+2025-12-20 17:26:44,scan open ports on localhost using nmap,nmap,"`nmap -p 22,80,443 localhost -T4`",generated
+2025-12-21 12:38:23,hello,unknown,,low_confidence
+2025-12-21 17:01:10,hello,unknown,,low_confidence
+2025-12-21 17:04:34,give me command for nmap,nmap,nmap -sP <target>,generated
