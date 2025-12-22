@@ -1,0 +1,7 @@
+Basic CLI created -done
+Need to rebuild environment -done
+for gpu acceleration faiss-gpu - not feasible due to complex cuda path manipulation
+might not run on cpu only machines.
+
+Basic communication with LLM achieved.
+

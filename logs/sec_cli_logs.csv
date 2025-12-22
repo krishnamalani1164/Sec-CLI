@@ -22,3 +22,12 @@ timestamp,user_prompt,predicted_tool,generated_command,execution_status
 2025-12-21 12:38:23,hello,unknown,,low_confidence
 2025-12-21 17:01:10,hello,unknown,,low_confidence
 2025-12-21 17:04:34,give me command for nmap,nmap,nmap -sP <target>,generated
+2025-12-22 21:13:51,hello,unknown,,low_confidence
+2025-12-22 22:59:45,hello,unknown,,low_confidence
+2025-12-22 23:02:00,give me a command to scan host 172.18.19.12 with nmap,nmap,"To scan the host 172.18.19.12 using Nmap, you can use the following command in your terminal:",generated
+2025-12-22 23:21:41,give me a command to scan host 172.18.19.12 with nmap,nmap,"To scan host `172.18.19.12` using Nmap, you can use the following command:",generated
+2025-12-22 23:25:40,give me nmap command to scan a host 17.123.45.6,nmap,"To scan a host using Nmap, you can use the following command:",generated
+2025-12-22 23:31:22,give me nmap command to scan host 172.16.23.45,nmap,"To perform a basic TCP port scan on the host with IP address 172.16.23.45 using Nmap, you can use the following command:",generated
+2025-12-22 23:32:35,give me nmap command to scan host 172.16.23.45,nmap,"To perform a basic TCP port scan on the host with IP address 172.16.23.45 using Nmap, you can use the following command:",generated
+2025-12-22 23:33:42,give me nmap command to scan host 172.16.23.45,nmap,"To scan a host using Nmap, you can use the following command:",generated
+2025-12-22 23:35:02,give me nmap command to scan host 172.16.92.23,nmap,"To perform a basic port scan on the IP address 172.16.92.23 using Nmap, you can use the following command:",generated

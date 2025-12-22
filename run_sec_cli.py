@@ -4,9 +4,13 @@ import sys
 import os
 
 python_exe = sys.executable
-script_path = os.path.abspath("sec_cli_shell.py")
+script_path = ".\sec_cli_shell.py"
+
+
+# Wrap paths in double quotes to handle spaces and drive letters
+command = f'{python_exe} {script_path}'
 
 subprocess.Popen(
-    ["cmd.exe", "/k", f"{python_exe} {script_path}"],
+    ["cmd.exe", "/k", command],
     creationflags=subprocess.CREATE_NEW_CONSOLE
 )

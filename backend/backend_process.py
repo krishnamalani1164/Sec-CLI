@@ -67,7 +67,8 @@ class BackendProcess:
         if confidence < 0.40:
             self._log(prompt, "unknown", "", "low_confidence")
             return {"tool": None, "command": None}
-
+        
+        print()
         # Otherwise → RAG + LLM
         command = self.generator.generate(prompt)
 
@@ -79,6 +80,7 @@ class BackendProcess:
         # Step 2: RAG + LLM command generation
         try:
             command = self.generator.generate(prompt)
+            
         except Exception as e:
             self._log(prompt, tool_name, "", "generation_error")
             return {

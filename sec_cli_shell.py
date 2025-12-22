@@ -2,21 +2,32 @@
 import os
 import subprocess
 import colorama
+import threading
 from colorama import Fore, Style
-from backend.backend_process import BackendProcess
+#from backend.backend_process import BackendProcess
 
 colorama.init()
-
-#Title 
-def set_title():
-    os.system("title Sec-CLI")
-
 
 #  Set window title
 os.system("title Sec-CLI")
 
 # Initialize Backend
-backend = BackendProcess()
+def load_backend():
+    print("Loading backend in background...")
+    # The import happens inside the function
+    from backend.backend_process import BackendProcess
+    global backend_inst
+    backend_inst = BackendProcess()
+    print("Backend ready! Press enter to return to CLI")
+
+# Start the thread
+bg_thread = threading.Thread(target=load_backend, daemon=True)
+bg_thread.start()
+
+# Your main code continues immediately here
+print("Main interface is running...")
+
+#backend = BackendProcess()
 
 print(Fore.CYAN + "SEC_CLI started. Type 'exit' to quit.\n" + Style.RESET_ALL)
 
@@ -47,17 +58,27 @@ while True:
             if result.stdout:
                 print(result.stdout)
             continue
-        # if error is NOT "command not recognized", show error
-        stderr = result.stderr.lower()
-        if "not recognized" not in stderr:
-            print(result.stderr)
-            continue
+        else:
+            stderr = result.stderr.lower()
+            print(stderr)
+            if "not recognized" not in stderr:
+                print(result.stderr)
+                continue 
+        
 
     except Exception:
-        pass # fall back to NLP pipeline
+        pass
+        # if error is NOT "command not recognized", show error
+        # fall back to NLP pipeline
+
+    print("command not recognised falling back to prompt mode")
+
+    
+
+
 
     # Send input to backend
-    result = backend.process_prompt(user_input)
+    result = backend_inst.process_prompt(user_input)
 
     tool = result.get("tool")
     command = result.get("command")
