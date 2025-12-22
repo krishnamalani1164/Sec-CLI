@@ -1,7 +1,12 @@
+21/12/2025
 Basic CLI created -done
 Need to rebuild environment -done
 for gpu acceleration faiss-gpu - not feasible due to complex cuda path manipulation
 might not run on cpu only machines.
 
+22/12/2025
 Basic communication with LLM achieved.
+Takes around 4 seconds to check the prompt. 
+
+
 

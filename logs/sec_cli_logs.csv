@@ -31,3 +31,5 @@ timestamp,user_prompt,predicted_tool,generated_command,execution_status
 2025-12-22 23:32:35,give me nmap command to scan host 172.16.23.45,nmap,"To perform a basic TCP port scan on the host with IP address 172.16.23.45 using Nmap, you can use the following command:",generated
 2025-12-22 23:33:42,give me nmap command to scan host 172.16.23.45,nmap,"To scan a host using Nmap, you can use the following command:",generated
 2025-12-22 23:35:02,give me nmap command to scan host 172.16.92.23,nmap,"To perform a basic port scan on the IP address 172.16.92.23 using Nmap, you can use the following command:",generated
+2025-12-22 23:47:03,hello,unknown,,low_confidence
+2025-12-22 23:49:22,give me nmap command to scan host 172.16.92.23,nmap,nmap -p- 172.16.92.23,generated
