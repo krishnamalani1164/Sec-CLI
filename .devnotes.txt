@@ -9,6 +9,15 @@ might not run on cpu only machines.
 Basic communication with LLM achieved.
 Takes around 4 seconds to check the prompt. 
 
+23/12/2025
+decision tree upgraded
+classifier performance verified* May require a run with LLM for more context knowledge.
+
+LLM supervised fine tuning .
+system prompt design for more exact outputs.
+
+
+
 
 
 
