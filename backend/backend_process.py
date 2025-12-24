@@ -65,6 +65,7 @@ class BackendProcess:
 
         # Low confidence → reject politely
         if confidence < 0.40:
+            print(Fore.YELLOW + "⚠ Low confidence in tool prediction. Aborting command generation." + Style.RESET_ALL)
             self._log(prompt, "unknown", "", "low_confidence")
             return {"tool": None, "command": None}
         
