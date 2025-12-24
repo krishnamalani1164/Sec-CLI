@@ -33,3 +33,16 @@ timestamp,user_prompt,predicted_tool,generated_command,execution_status
 2025-12-22 23:35:02,give me nmap command to scan host 172.16.92.23,nmap,"To perform a basic port scan on the IP address 172.16.92.23 using Nmap, you can use the following command:",generated
 2025-12-22 23:47:03,hello,unknown,,low_confidence
 2025-12-22 23:49:22,give me nmap command to scan host 172.16.92.23,nmap,nmap -p- 172.16.92.23,generated
+2025-12-24 20:37:04,"""Set protocol dropdown to ssh and show options (no run).""",xhydra,Host my_remote_server,generated
+2025-12-24 21:10:15,hello,unknown,,low_confidence
+2025-12-24 21:11:34,give me a command to scan host 172.34.45.23 with nmap,nmap,nmap 172.34.45.23,generated
+2025-12-24 21:17:34,hello,unknown,,low_confidence
+2025-12-24 21:18:58,scan a host 172.13.14.16 with nmap,nmap,nmap 172.13.14.16,generated
+2025-12-24 21:26:24,Demonstrate setting target host field to 10.0.1.85 (lab).,nmap,ssh user@10.0.1.85,generated
+2025-12-24 21:28:29,ipconfigipconfig,unknown,,low_confidence
+2025-12-24 21:29:38,Demonstrate setting target host field to 10.0.1.85 (lab).,xhydra,export TARGET_HOST=10.0.1.85,generated
+2025-12-24 21:43:07,Verify HTTPS with --tlsv1.2 (demo).,curl_wget,No bash command found in the response.,generated
+2025-12-24 21:47:57,Verify HTTPS with --tlsv1.2 (demo).,curl_wget,echo | openssl s_client -connect google.com:443 -tls1_2,generated
+2025-12-24 21:52:04,Send a GET request with a custom User-Agent.,unknown,,low_confidence
+2025-12-24 21:52:28,Send a GET request with a custom User-Agent.,unknown,,low_confidence
+2025-12-24 22:00:17,Send a GET request with a custom User-Agent.,curl_wget,pip install requests,generated

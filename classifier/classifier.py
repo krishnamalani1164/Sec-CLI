@@ -5,8 +5,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import os
 
+
 DATASET_PATH = os.path.join("data", "security_nlp_cli_10000.csv")
+#DATASET_PATH = os.path.join("data", "security_nlp_cli_10000.csv")
+
+#DATASET_PATH = os.path.join("data", "security_nlp_cli_upgraded.csv")
+#DATASET_PATH = os.path.join("data", "security_nlp_cli_upgraded_curl.csv")
+#DATASET_PATH = os.path.join("data", "security_nlp_cli_upgraded_wocurl.csv")
 SIMILARITY_THRESHOLD = 0.45   # robust default
+
 
 class EmbeddingClassifier:
     def __init__(self):
