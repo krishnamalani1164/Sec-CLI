@@ -46,3 +46,6 @@ timestamp,user_prompt,predicted_tool,generated_command,execution_status
 2025-12-24 21:52:04,Send a GET request with a custom User-Agent.,unknown,,low_confidence
 2025-12-24 21:52:28,Send a GET request with a custom User-Agent.,unknown,,low_confidence
 2025-12-24 22:00:17,Send a GET request with a custom User-Agent.,curl_wget,pip install requests,generated
+2025-12-25 21:16:47,Scan host nmap 173.23.24.25,nmap,No bash command found in the response.,generated
+2025-12-25 21:28:18,scan nmap host 172.34.45.56,nmap,nmap -p- 172.34.45.56,generated
+2025-12-25 21:35:42,Test run Snort in PCAP replay mode with /lab/demo_661.out.,snort,snort -c /path/to/snort.conf -r /lab/demo_661.out,generated
