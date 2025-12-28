@@ -1,8 +1,14 @@
-import torch
-print(f"Torch version: {torch.__version__}")
-print(f"CUDA available: {torch.cuda.is_available()}")
+import os
+import sys
+
+# Force bypass triton and specific torch patches that cause the 'int1' error
+os.environ["UNSLOTH_RETURN_LOGITS"] = "1"
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+
 try:
     from unsloth import FastLanguageModel
-    print("Unsloth imported successfully!")
+    import torch
 except Exception as e:
-    print(f"Import failed: {e}")
+    print(f"Still failing? Error: {e}")
+
+# The rest of your code...
