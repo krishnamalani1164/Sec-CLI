@@ -1,0 +1,19 @@
+#Sample model file for finetuned mistral model.
+
+# 1. Path to your fine-tuned GGUF file
+FROM ./your-finetuned-model.gguf
+
+# 2. The template must match your training data: <s>[INST] Prompt [/INST]
+# Note: Ollama handles the <s> (BOS) token automatically for Mistral models.
+TEMPLATE """[INST] {{ .Prompt }} [/INST]"""
+
+# 3. Parameters for precise command generation
+# We use a low temperature because security commands require exact syntax.
+PARAMETER temperature 0.1
+PARAMETER top_p 0.95
+PARAMETER stop "[INST]"
+PARAMETER stop "[/INST]"
+PARAMETER stop "</s>"
+
+# 4. Set the context window (Mistral supports 8k or 32k depending on version)
+PARAMETER num_ctx 8192
