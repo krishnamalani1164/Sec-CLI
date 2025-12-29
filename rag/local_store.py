@@ -5,9 +5,10 @@ import pandas as pd
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-DATASET_PATH = os.path.join("data", "security_nlp_cli_10000.csv")
-INDEX_PATH = os.path.join("rag", "local_index.faiss")
-META_PATH = os.path.join("rag", "local_meta.pkl")
+CORE_PATH= os.path.dirname(os.path.abspath(__file__))
+DATASET_PATH = os.path.join(CORE_PATH, "..\data", "security_nlp_cli_10000.csv")
+INDEX_PATH = os.path.join(CORE_PATH, "local_index.faiss")
+META_PATH = os.path.join(CORE_PATH, "local_meta.pkl")
 
 class LocalVectorStore:
     def __init__(self):
@@ -74,3 +75,42 @@ class LocalVectorStore:
             results.append(item)
 
         return results
+    
+if __name__ == "__main__":
+    # # 1. Setup environment: Create necessary directories
+    # os.makedirs("data", exist_ok=True)
+    # os.makedirs("rag", exist_ok=True)
+
+    # # 2. Check if the dataset exists in the expected location
+    # # If the file is in the current directory, we move/copy it to the 'data' folder
+    # source_file = "security_nlp_cli_10000.csv"
+    # if os.path.exists(source_file) and not os.path.exists(DATASET_PATH):
+    #     import shutil
+    #     shutil.copy(source_file, DATASET_PATH)
+    #     print(f"Copied {source_file} to {DATASET_PATH}")
+
+    # 3. Initialize and Build the Vector Store
+    lvs = LocalVectorStore()
+    
+    # Check if we need to build or just load
+    if not os.path.exists(INDEX_PATH):
+        print("Building the vector index... (This may take a minute)")
+        lvs.build()
+    else:
+        print("Loading existing index...")
+        lvs.load()
+
+    # 4. Perform a test search
+    test_query = "How can I perform a quick scan of the top 100 ports on 192.168.1.1?"
+    print(f"\n[Test] Searching for: '{test_query}'")
+    
+    results = lvs.search(test_query, k=2)
+
+    # 5. Display results
+    for i, res in enumerate(results):
+        print(f"\n--- Result {i+1} (Distance: {res['distance']:.4f}) ---")
+        print(f"Tool:    {res['tool']}")
+        print(f"Prompt:  {res['nl_prompt']}")
+        print(f"Command: {res['cli_command_demo']}")
+        print(f"Safety:  {res['safety_note']}")
+    

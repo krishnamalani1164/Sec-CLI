@@ -1,4 +1,4 @@
-from rag.local_store import LocalVectorStore
+from local_store import LocalVectorStore
 
 class RAGRetriever:
     def __init__(self, k=3):
