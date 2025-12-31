@@ -1,27 +1,27 @@
-from retriever import RAGRetriever
-from context_builder import build_context
+# from rag.retriever import RAGRetriever
+# from rag.context_builder import build_context
 from llm.llm_client import LocalLLM
 
 
 class RAGCommandGenerator:
     def __init__(self, k: int = 3, model: str = "mistral"):
         # EVERYTHING using self MUST be inside __init__
-        self.retriever = RAGRetriever(k=k)
+        # self.retriever = RAGRetriever(k=k)
         self.llm = LocalLLM(model=model)
 
     def generate(self, user_prompt: str) -> str:
         #Step 1: Retrieve relevant examples
-        retrieved = self.retriever.retrieve(user_prompt)
+        # #retrieved = self.retriever.retrieve(user_prompt)
 
-        if not retrieved:
-            return ""
+        # if not retrieved:
+        #     return ""
 
-        # Step 2: Build RAG context
-        context_prompt = build_context(retrieved, user_prompt)
+        # # Step 2: Build RAG context
+        # context_prompt = build_context(retrieved, user_prompt)
 
-        print("Context Prompt:",context_prompt)
-        # # Step 3: Generate command using LLM
-        # command = self.llm.generate(context_prompt)
+        # print("Context Prompt:",context_prompt)
+        # # # Step 3: Generate command using LLM
+        # # command = self.llm.generate(context_prompt)
         # Step 3: Generate command using LLM
         command = self.llm.generate(user_prompt)
 

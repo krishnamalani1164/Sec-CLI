@@ -2,7 +2,7 @@ import ollama
 import re
 
 SYSTEM_PROMPT= """
-You are the SEC-CLI Intelligence Engine, an expert cybersecurity assistant for students and professionals. Your primary goal is to translate natural language requests into precise terminal commands for security tools (e.g., Nmap, Metasploit, Gobuster, Netcat, PowerShell, etc.).
+You are the SEC-CLI Intelligence Engine, an expert cybersecurity assistant for students and professionals. Your primary goal is to translate natural language requests into precise terminal commands for security tools (e.g., Nmap, Xhydra, Metasploit, Gobuster, Netcat, PowerShell, etc.).
 
 ### GUIDELINES:
 1.  **Technical Accuracy:** Only suggest valid flags. If a tool requires sudo/root, include it.
@@ -84,5 +84,5 @@ if __name__ == "__main__":
     llm = LocalLLM(model="mistral")
     user_prompt = "Give me an nmap command to scan 172.16.92.23"
     
-    command = llm.generate_command(user_prompt)
+    command = llm.generate(user_prompt)
     print(f"Extracted Command: {command}")

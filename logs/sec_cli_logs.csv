@@ -49,3 +49,11 @@ timestamp,user_prompt,predicted_tool,generated_command,execution_status
 2025-12-25 21:16:47,Scan host nmap 173.23.24.25,nmap,No bash command found in the response.,generated
 2025-12-25 21:28:18,scan nmap host 172.34.45.56,nmap,nmap -p- 172.34.45.56,generated
 2025-12-25 21:35:42,Test run Snort in PCAP replay mode with /lab/demo_661.out.,snort,snort -c /path/to/snort.conf -r /lab/demo_661.out,generated
+2025-12-31 19:00:55,Demonstrate setting target host field to 10.0.0.151 (lab).,xhydra,nmap -sV 10.0.0.151,generated
+2025-12-31 19:00:55,Demonstrate setting target host field to 10.0.0.151 (lab).,xhydra,nmap -sV 10.0.0.151,generated
+2025-12-31 19:05:27,Demonstrate setting target host field to 10.0.0.151 (lab).,xhydra,xhydra -H 10.0.0.151,generated
+2025-12-31 19:05:27,Demonstrate setting target host field to 10.0.0.151 (lab).,xhydra,xhydra -H 10.0.0.151,generated
+2025-12-31 19:12:17,Generate a sample hash file path /lab/demo_297.out (placeholder).,john_the_ripper,john --format=raw-sha1 --wordlist=/usr/share/wordlists/rockyou.txt /lab/demo_297.out,generated
+2025-12-31 19:17:01,Send a GET request with a custom User-Agent.,curl_wget,curl -A 'Custom User-Agent' GET '[URL]',generated
+2025-12-31 19:22:58,Send a GET request with a custom User-Agent to the url www.friends.com,curl_wget,curl -A 'Custom User-Agent String' https://www.friends.com/,generated
+2025-12-31 19:24:47,Send a GET request with a custom User-Agent to the url www.friends.com,curl_wget,curl -A 'Custom User-Agent' https://www.friends.com/,generated

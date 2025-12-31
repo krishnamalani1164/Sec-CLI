@@ -4,6 +4,9 @@ from datetime import datetime
 
 from classifier.classifier import classify_tool
 from rag.rag_generator import RAGCommandGenerator
+from llm.llm_client import LocalLLM
+
+BASE_TOOL_LIST = ["nmap","snort","xhydra"]
 
 LOG_FILE = "logs/sec_cli_logs.csv"
 
@@ -18,6 +21,7 @@ class BackendProcess:
         self.__init__logger()
         # Initialize RAG-based generator once
         self.generator = RAGCommandGenerator(k=3, model="mistral")
+        self.sft_model= LocalLLM(model="mistral")
 
     def __init__logger(self):
         os.makedirs("logs", exist_ok=True)
@@ -69,25 +73,24 @@ class BackendProcess:
             self._log(prompt, "unknown", "", "low_confidence")
             return {"tool": None, "command": None}
         
-        print()
-        # Otherwise → RAG + LLM
-        command = self.generator.generate(prompt)
-
-
-        # Do NOT block RAG if classifier is unsure
-        if tool_name == "unknown":
-            tool_name = "rag_llm"
-
-        # Step 2: RAG + LLM command generation
-        try:
-            command = self.generator.generate(prompt)
+        user_prompt = f"Generate a {tool_name} command for the following request:\n{prompt}"
+        if tool_name in BASE_TOOL_LIST:
             
-        except Exception as e:
-            self._log(prompt, tool_name, "", "generation_error")
-            return {
-                "tool": tool_name,
-                "command": None
-            }
+            print(f"Using SFT-based generation for tool: {tool_name}")
+            command = self.sft_model.generate(user_prompt)
+            self._log(prompt, tool_name, command, "generated")
+        else:
+        # Step 2: RAG + LLM command generation
+            try:
+                print(f"Using RAG-based generation for tool: {tool_name}")
+                command = self.generator.generate(user_prompt)
+                
+            except Exception as e:
+                self._log(prompt, tool_name, "", "generation_error")
+                return {
+                    "tool": tool_name,
+                    "command": None
+                }
 
         if not command:
             self._log(prompt, tool_name, "", "no_command_generated")
