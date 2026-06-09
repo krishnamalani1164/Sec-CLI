@@ -47,7 +47,7 @@ class BackendProcess:
                 status
             ])
 
-    def process_prompt(self, prompt: str) -> dict:
+    def process_prompt(self, prompt: str, current_os: str = "Linux") -> dict:
         """
         Takes user prompt and returns:
         {
@@ -69,11 +69,18 @@ class BackendProcess:
 
         # Low confidence → reject politely
         if confidence < 0.40:
-            print(Fore.YELLOW + "⚠ Low confidence in tool prediction. Aborting command generation." + Style.RESET_ALL)
+            print( "⚠ Low confidence in tool prediction. Aborting command generation.")
             self._log(prompt, "unknown", "", "low_confidence")
             return {"tool": None, "command": None}
         
         user_prompt = f"Generate a {tool_name} command for the following request:\n{prompt}"
+
+        # system_prompt= """ You are a hel-pful assistant for regular office work. You will be provided with a a persons user profile and 
+        # list of permissions
+        # try to be as helpful as possible but only provide repsonses for which the user has permissions. If the user does not have permissions to perform the task, respond with 'Permission Denied'.
+        # """
+
+        ##User prompt:  The following user has made a query as follows: {prompt}. The user is currently on {current_os} and has the following permissions: [list of permissions]. Genera.
         if tool_name in BASE_TOOL_LIST:
             
             print(f"Using SFT-based generation for tool: {tool_name}")

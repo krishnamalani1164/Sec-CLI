@@ -1,0 +1,13 @@
+dataset_size,document_type,avg_tokens_per_item,embedding_time_seconds,index_build_time_seconds,total_update_time_seconds
+1000,raw_documents,500,45,12,57
+1000,synthetic_structured,70,4,2,6
+5000,raw_documents,520,240,55,295
+5000,synthetic_structured,75,18,8,26
+10000,raw_documents,550,520,120,640
+10000,synthetic_structured,80,35,15,50
+25000,raw_documents,600,1400,310,1710
+25000,synthetic_structured,85,95,40,135
+50000,raw_documents,650,3200,700,3900
+50000,synthetic_structured,90,210,80,290
+100000,raw_documents,700,6800,1400,8200
+100000,synthetic_structured,95,420,160,580

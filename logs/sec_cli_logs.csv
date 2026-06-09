@@ -57,3 +57,13 @@ timestamp,user_prompt,predicted_tool,generated_command,execution_status
 2025-12-31 19:17:01,Send a GET request with a custom User-Agent.,curl_wget,curl -A 'Custom User-Agent' GET '[URL]',generated
 2025-12-31 19:22:58,Send a GET request with a custom User-Agent to the url www.friends.com,curl_wget,curl -A 'Custom User-Agent String' https://www.friends.com/,generated
 2025-12-31 19:24:47,Send a GET request with a custom User-Agent to the url www.friends.com,curl_wget,curl -A 'Custom User-Agent' https://www.friends.com/,generated
+2026-06-08 12:58:22,hello,unknown,,low_confidence
+2026-06-08 12:58:51,hello,unknown,,low_confidence
+2026-06-08 12:58:54,clear,unknown,,low_confidence
+2026-06-08 12:59:04,hello,unknown,,low_confidence
+2026-06-08 13:00:07,scan a host 172.13.14.16 with nmap,nmap,nmap -sV -F 172.13.14.16 -oN results.txt,generated
+2026-06-08 13:00:07,scan a host 172.13.14.16 with nmap,nmap,nmap -sV -F 172.13.14.16 -oN results.txt,generated
+2026-06-08 13:14:59,Send a GET request with a custom User-Agent,curl_wget,curl --user-agent 'Custom User-Agent' http://example.com,generated
+2026-06-08 13:18:16,use xhydra to perform ddos on 172.13.12.1,unknown,,low_confidence
+2026-06-08 13:19:58,"scan the given wordpress website ""www.scanme.nmap.org""",nmap,"sudo nmap -p 80,443 --script=vuln-wordpress -oN results.txt www.scanme.nmap.org",generated
+2026-06-08 13:19:58,"scan the given wordpress website ""www.scanme.nmap.org""",nmap,"sudo nmap -p 80,443 --script=vuln-wordpress -oN results.txt www.scanme.nmap.org",generated

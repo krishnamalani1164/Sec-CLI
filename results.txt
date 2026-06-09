@@ -1,0 +1,2 @@
+# Nmap 7.97 scan initiated Mon Jun  8 13:00:20 2026 as: nmap -sV -F -oN results.txt 172.13.14.16
+# Nmap done at Mon Jun  8 13:00:29 2026 -- 1 IP address (0 hosts up) scanned in 9.35 seconds

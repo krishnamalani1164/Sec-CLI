@@ -4,6 +4,8 @@ import colorama
 import threading
 import re
 from colorama import Fore, Style
+import platform
+current_os = platform.system()
 
 colorama.init()
 os.system("title Sec-CLI")
@@ -30,19 +32,20 @@ def is_natural_language(text):
     word_count = len(text.split())
     return (any(word in text_lower for word in nl_indicators) or word_count > 4) and not has_cli_flags
 
-def run_ai_logic(prompt_text):
+def run_ai_logic(prompt_text, current_os=current_os):
     """Encapsulated AI processing logic to be reused in fallbacks."""
     if backend_inst is None:
         print(Fore.YELLOW + "Backend still initializing..." + Style.RESET_ALL)
         return False
 
-    print(Fore.YELLOW + f"🤖 Processing as prompt: {prompt_text}" + Style.RESET_ALL)
-    result = backend_inst.process_prompt(prompt_text)
+    print(Fore.YELLOW + f"Processing as prompt: {prompt_text}" + Style.RESET_ALL)
+    prompt_with_os = f"[OS: {current_os}]\n{prompt_text}"
+    result = backend_inst.process_prompt(prompt_text, current_os=current_os)
     generated_cmd = result.get("command")
 
     if generated_cmd:
-        print(Fore.CYAN + f"🔧 Tool: {result.get('tool')}")
-        print(Fore.MAGENTA + f"⚙ Proposed: {generated_cmd}" + Style.RESET_ALL)
+        print(Fore.CYAN + f"Tool: {result.get('tool')}")
+        print(Fore.MAGENTA + f"Proposed: {generated_cmd}" + Style.RESET_ALL)
         confirm = input("Execute? (y/n): ").lower()
         if confirm == 'y':
             subprocess.run(generated_cmd, shell=True)
@@ -88,9 +91,9 @@ while True:
         # If the command failed (exit code non-zero), trigger the final fallback
         if result.returncode != 0:
             print(Fore.DIM + "Command failed. Attempting AI interpretation..." + Style.RESET_ALL)
-            if not run_ai_logic(user_input):
+            if not run_ai_logic(user_input, current_os=current_os):
                 print(Fore.RED + "AI could not resolve the failed command." + Style.RESET_ALL)
                 
     except Exception as e:
         # Emergency fallback if subprocess itself crashes
-        run_ai_logic(user_input)
+        run_ai_logic(user_input, current_os=current_os)
